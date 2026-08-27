@@ -327,3 +327,77 @@ const supabaseClient =
     SUPABASE_URL,
     SUPABASE_KEY
   );
+async function finishQuiz() {
+
+  clearInterval(timerInterval);
+
+  const totalQuestions =
+    shuffledQuestions.length;
+
+  const percentage =
+    Math.round((score / totalQuestions) * 100);
+
+  // Show result immediately
+  document
+    .getElementById("quizScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("resultScreen")
+    .classList.remove("hidden");
+
+  document.getElementById("finalScore").innerText =
+    `${score} / ${totalQuestions}`;
+
+  document.getElementById("percentage").innerText =
+    `${percentage}%`;
+
+  document.getElementById("resultTitle").innerText =
+    selectedLanguage === "ar"
+      ? "أحسنت! 🎉"
+      : "Great Job! 🎉";
+
+  document.getElementById("message").innerText =
+    selectedLanguage === "ar"
+      ? "استمر في قراءة كلمة الله والنمو فيها! ❤️"
+      : "Keep growing in God's Word! ❤️";
+
+
+  // Save result to Supabase
+  const { data, error } =
+    await supabaseClient
+      .from("results")
+      .insert([
+        {
+          player_name: playerName,
+          player_group: playerGroup,
+          language: selectedLanguage,
+          score: score,
+          total_questions: totalQuestions,
+          percentage: percentage,
+          time_seconds: seconds
+        }
+      ])
+      .select();
+
+
+  if (error) {
+
+    console.error(
+      "Error saving result:",
+      error
+    );
+
+    console.log(
+      "Result was not saved."
+    );
+
+  } else {
+
+    console.log(
+      "Result saved successfully:",
+      data
+    );
+
+  }
+}
