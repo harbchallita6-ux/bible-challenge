@@ -282,7 +282,16 @@ function finishQuiz() {
   const percentage =
     Math.round((score / 50) * 100);
 
-  document
+  document<script src="questions.js"></script> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="questions.js"></script>
+<script src="quiz.js"></script> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="questions.js"></script>
+<script src="quiz.js"></script>
+
+</body>
+</html>
     .getElementById("quizScreen")
     .classList.add("hidden");
 
@@ -307,3 +316,14 @@ function finishQuiz() {
       : "Keep growing in God's Word! ❤️";
 
 }
+const SUPABASE_URL =
+  "https://cuqhnxknbdcdnckbhjzk.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_g3w283t5Wlj_DIVenqxRYg_QXhI-FOf";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
