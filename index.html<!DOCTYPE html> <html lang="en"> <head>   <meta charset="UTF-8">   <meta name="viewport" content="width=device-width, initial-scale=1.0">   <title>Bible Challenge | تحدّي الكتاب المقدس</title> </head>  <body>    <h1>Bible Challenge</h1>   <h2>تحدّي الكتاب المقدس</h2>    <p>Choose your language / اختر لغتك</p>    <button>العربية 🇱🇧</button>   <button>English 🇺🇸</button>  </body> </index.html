@@ -2,3 +2,155 @@ index.html
 quiz.js
 style.css
 questions.js
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bible Challenge | تحدّي الكتاب المقدس</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- START SCREEN -->
+  <section id="startScreen" class="card">
+
+    <div class="logo">✝️</div>
+
+    <h1>Bible Challenge</h1>
+
+    <h2>تحدّي الكتاب المقدس</h2>
+
+    <p class="subtitle">
+      50 Questions • 50 سؤالًا
+    </p>
+
+    <input
+      id="playerName"
+      type="text"
+      placeholder="Child's Name / اسم الطفل"
+      maxlength="50"
+    >
+
+    <input
+      id="playerGroup"
+      type="text"
+      placeholder="Age / Group / العمر أو المجموعة"
+      maxlength="30"
+    >
+
+    <p class="subtitle">
+      Choose your language / اختر اللغة
+    </p>
+
+    <div class="language-buttons">
+
+      <button onclick="startQuiz('ar')">
+        🇱🇧 العربية
+      </button>
+
+      <button onclick="startQuiz('en')">
+        🇺🇸 English
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUIZ SCREEN -->
+  <section id="quizScreen" class="card hidden">
+
+    <div class="quiz-top">
+
+      <span id="progress">
+        1 / 50
+      </span>
+
+      <span id="timer">
+        00:00
+      </span>
+
+      <span id="score">
+        Score: 0
+      </span>
+
+    </div>
+
+
+    <div
+      id="questionNumber"
+      class="question-number">
+    </div>
+
+
+    <div
+      id="question"
+      class="question">
+    </div>
+
+
+    <div id="answers"></div>
+
+
+    <button
+      id="nextButton"
+      class="next-button hidden"
+      onclick="nextQuestion()">
+
+      Next / التالي
+
+    </button>
+
+  </section>
+
+
+  <!-- RESULT SCREEN -->
+  <section id="resultScreen" class="card result hidden">
+
+    <div class="logo">
+      🏆
+    </div>
+
+    <h1 id="resultTitle">
+      Great Job!
+    </h1>
+
+    <div
+      id="finalScore"
+      class="final-score">
+      0 / 50
+    </div>
+
+    <h2 id="percentage">
+      0%
+    </h2>
+
+    <p id="message"></p>
+
+    <button
+      class="next-button"
+      onclick="location.reload()">
+
+      Play Again / مرة أخرى
+
+    </button>
+
+  </section>
+
+</div>
+
+
+<script src="questions.js"></script>
+
+<script src="quiz.js"></script>
+
+</body>
+
+</html>
